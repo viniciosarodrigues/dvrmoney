@@ -48,7 +48,7 @@ public class LancamentoResource {
 	}
 
 	@PostMapping
-	@PreAuthorize("hasAuthority('ROLE_CADASTRA_LANCAMENTO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public ResponseEntity<Lancamento> criarLancamento(@Valid @RequestBody Lancamento lancamento,
 			HttpServletResponse response) {
 		Lancamento lancamentoSalvo = lancamentoService.criar(lancamento);
