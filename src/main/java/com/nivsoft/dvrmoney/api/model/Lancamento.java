@@ -1,6 +1,7 @@
 package com.nivsoft.dvrmoney.api.model;
 
 import java.time.LocalDate;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Lancamento {
 	@Column(name = "DATA_PAGAMENTO")
 	private LocalDate dataPagamento;
 
-	private Double valor;
+	private BigDecimal valor;
 
 	private String observacao;
 
@@ -108,11 +109,11 @@ public class Lancamento {
 		this.pessoa = pessoa;
 	}
 
-	public Double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
