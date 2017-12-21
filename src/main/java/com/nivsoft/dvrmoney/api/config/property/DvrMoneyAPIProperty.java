@@ -5,15 +5,15 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("drvmoney")
 public class DvrMoneyAPIProperty {
 
-	private static final String origemPermitida = "http://localhost:8000";
+	private String origemPermitida = "http://localhost:8000";
 	private final Seguranca seguranca = new Seguranca();
 
 	public String getOrigemPermitida() {
 		return origemPermitida;
 	}
 
-	public static String getOrigempermitida() {
-		return origemPermitida;
+	public void setOrigempermitida(String originPermitida) {
+		this.origemPermitida = originPermitida;
 	}
 
 	public Seguranca getSeguranca() {
