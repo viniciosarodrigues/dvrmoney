@@ -12,8 +12,8 @@ public class DvrMoneyAPIProperty {
 		return origemPermitida;
 	}
 
-	public void setOrigempermitida(String originPermitida) {
-		this.origemPermitida = originPermitida;
+	public void setOrigemPermitida(String origemPermitida) {
+		this.origemPermitida = origemPermitida;
 	}
 
 	public Seguranca getSeguranca() {
