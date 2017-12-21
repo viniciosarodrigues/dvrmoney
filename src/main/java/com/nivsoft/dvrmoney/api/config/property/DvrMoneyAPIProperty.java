@@ -2,7 +2,7 @@ package com.nivsoft.dvrmoney.api.config.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("drvmoney")
+@ConfigurationProperties("dvrmoney")
 public class DvrMoneyAPIProperty {
 
 	private String origemPermitida = "http://localhost:8000";
