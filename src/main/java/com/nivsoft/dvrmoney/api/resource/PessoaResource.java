@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,11 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nivsoft.dvrmoney.api.event.RecursoCriadoEvent;
 import com.nivsoft.dvrmoney.api.model.Pessoa;
+import com.nivsoft.dvrmoney.api.repository.PessoaRepository;
 import com.nivsoft.dvrmoney.api.service.PessoaService;
 
 @RestController
@@ -30,6 +34,9 @@ public class PessoaResource {
 
 	@Autowired
 	public PessoaService pessoaService;
+
+	@Autowired
+	public PessoaRepository pessoaRepository;
 
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -76,5 +83,11 @@ public class PessoaResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizaPropriedadeAtivo(@PathVariable Long id, @RequestBody Boolean ativo) {
 		pessoaService.atualizaPropriedadeAtivo(id, ativo);
+	}
+
+	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA')")
+	public Page<Pessoa> pesquisar(@RequestParam(required = false, defaultValue = "%") String nome, Pageable pageable) {
+		return pessoaRepository.findByNomeContaining(nome, pageable);
 	}
 }
