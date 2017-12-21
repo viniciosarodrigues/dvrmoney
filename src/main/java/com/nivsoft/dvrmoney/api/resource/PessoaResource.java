@@ -85,7 +85,7 @@ public class PessoaResource {
 		pessoaService.atualizaPropriedadeAtivo(id, ativo);
 	}
 
-	@GetMapping
+	@GetMapping("/resumo")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA')")
 	public Page<Pessoa> pesquisar(@RequestParam(required = false, defaultValue = "%") String nome, Pageable pageable) {
 		return pessoaRepository.findByNomeContaining(nome, pageable);
