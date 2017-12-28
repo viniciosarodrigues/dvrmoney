@@ -66,7 +66,7 @@ public class DvrMoneyExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler({ DataIntegrityViolationException.class })
 	public ResponseEntity<Object> handlerDataIntegrityViolationException(DataIntegrityViolationException ex,
 			WebRequest request) {
-		String mensagemUsuario = messageSource.getMessage("", null, LocaleContextHolder.getLocale());
+		String mensagemUsuario = messageSource.getMessage("falha.violacao-de-chave", null, LocaleContextHolder.getLocale());
 		String mensagemDesenvolvedor = ex.toString();
 		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
