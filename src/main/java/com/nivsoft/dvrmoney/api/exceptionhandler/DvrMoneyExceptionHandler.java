@@ -130,6 +130,5 @@ public class DvrMoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		public void setMensagemUsuario(String mensagemUsuario) {
 			this.mensagemUsuario = mensagemUsuario;
 		}
-
 	}
 }
