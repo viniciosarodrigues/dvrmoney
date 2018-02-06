@@ -42,7 +42,7 @@ public class PessoaResource {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
-	@PreAuthorize("hasAnyAuthority('ROLE_PESQUISAR_PESSOA', 'ROLE_ALL) and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
 	public List<Pessoa> listar() {
 		return pessoaService.listar();
 	}
