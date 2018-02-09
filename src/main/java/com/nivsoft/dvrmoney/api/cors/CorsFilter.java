@@ -37,8 +37,8 @@ public class CorsFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 
-		resp.setHeader("Access-Control-Allow-Origin", dvrApiProperties.getOrigemPermitida());
-		resp.setHeader("Access-Control-Allow-Credentials", "true");
+		resp.setHeader("Access-Control-Allow-Origin", "*");
+		// resp.setHeader("Access-Control-Allow-Credentials", "true");
 
 		if ("OPTIONS".equals(req.getMethod())
 				&& dvrApiProperties.getOrigemPermitida().equals(req.getHeader("Origin"))) {
