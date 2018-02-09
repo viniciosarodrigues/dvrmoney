@@ -11,12 +11,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
-import com.nivsoft.dvrmoney.api.config.property.DvrMoneyAPIProperty;
 
 /**
  * Filtro que habilita o CORS
@@ -28,9 +25,6 @@ import com.nivsoft.dvrmoney.api.config.property.DvrMoneyAPIProperty;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 
-	@Autowired
-	private DvrMoneyAPIProperty dvrApiProperties;
-
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -40,8 +34,7 @@ public class CorsFilter implements Filter {
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.setHeader("Access-Control-Allow-Credentials", "true");
 
-		if ("OPTIONS".equals(req.getMethod())
-				&& dvrApiProperties.getOrigemPermitida().equals(req.getHeader("Origin"))) {
+		if ("OPTIONS".equals(req.getMethod())) {
 			resp.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
 			resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
 			resp.setHeader("Access-Control-Max-Age", "3600");
