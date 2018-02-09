@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("dvrmoney")
 public class DvrMoneyAPIProperty {
 
-	private String origemPermitida = "*";
+	private String origemPermitida = "http://localhost:8000";
 	private final Seguranca seguranca = new Seguranca();
 
 	public String getOrigemPermitida() {
