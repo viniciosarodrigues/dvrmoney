@@ -30,7 +30,7 @@ public class CorsConfigurationFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 
 		resp.setHeader("Access-Control-Allow-Origin", "*");
-		resp.setHeader("Access-Control-Allow-Credentials", "false");
+		resp.setHeader("Access-Control-Allow-Credentials", "true");
 
 		resp.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
 		resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
