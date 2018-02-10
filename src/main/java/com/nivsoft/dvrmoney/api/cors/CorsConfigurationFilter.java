@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.Ordered;
@@ -28,9 +29,10 @@ public class CorsConfigurationFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletResponse resp = (HttpServletResponse) response;
+		HttpServletRequest req = (HttpServletRequest) request;
 
-		resp.setHeader("Access-Control-Allow-Origin", "*");
-		resp.setHeader("Access-Control-Allow-Credentials", "true");
+		resp.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
+		resp.setHeader("Access-Control-Allow-Credentials", "t");
 
 		resp.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
 		resp.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
